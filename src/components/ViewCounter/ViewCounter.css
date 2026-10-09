@@ -1,0 +1,97 @@
+.view-counter {
+  position: fixed;
+  top: max(16px, env(safe-area-inset-top));
+  left: max(18px, env(safe-area-inset-left));
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px 5px 10px;
+  background: rgba(6, 8, 24, 0.85);
+  border: 1px solid rgba(82, 232, 255, 0.3);
+  border-left: 3px solid #ff0099;
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 240, 255, 0.15);
+  user-select: none;
+  animation: view-counter-fade 0.5s ease-out both;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  cursor: default;
+}
+
+.view-counter:hover {
+  transform: translateY(-1px);
+  border-color: #52e8ff;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.6), 0 0 16px rgba(82, 232, 255, 0.35);
+}
+
+@keyframes view-counter-fade {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.view-counter-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #52e8ff;
+  box-shadow: 0 0 8px #52e8ff;
+  animation: view-counter-pulse 2.2s infinite ease-in-out;
+  flex-shrink: 0;
+}
+
+@keyframes view-counter-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+    box-shadow: 0 0 12px #ff0099;
+  }
+}
+
+.view-counter-label {
+  font-family: 'Eurostile Extended', 'Arial Black', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: 0.08em;
+  color: #8fe9ff;
+  text-transform: uppercase;
+}
+
+.view-counter-number {
+  font-family: 'Eurostile Extended', 'Jost', sans-serif;
+  font-size: 0.84rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 8px rgba(82, 232, 255, 0.6);
+}
+
+@media (max-width: 768px) {
+  .view-counter {
+    top: max(14px, env(safe-area-inset-top));
+    left: max(14px, env(safe-area-inset-left));
+    padding: 4px 11px 4px 8px;
+    gap: 6px;
+  }
+
+  .view-counter-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+  }
+
+  .view-counter-number {
+    font-size: 0.78rem;
+  }
+}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { MenuBackground } from '../../components/MenuBackground'
 import { MenuList } from '../../components/MenuList'
+import { ViewCounter } from '../../components/ViewCounter'
 import { MENU_ITEMS } from '../../data/menuItems'
 import { useMenuNavigation } from '../../hooks/MenuNavigation'
 
@@ -43,6 +44,7 @@ export const MainMenu = () => {
   return (
     <>
       <MenuBackground entranceSrc={playEntrance ? ENTRANCE_SRC : undefined} />
+      <ViewCounter />
       <MenuList items={MENU_ITEMS} selected={selected} onSelect={moveTo} animateIn={playEntrance} />
     </>
   )
