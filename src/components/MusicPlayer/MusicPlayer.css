@@ -38,6 +38,12 @@
   cursor: grabbing !important;
 }
 
+.music-player-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .music-player-drag-badge {
   display: inline-flex;
   align-items: center;
@@ -56,6 +62,90 @@
 .music-player:hover .music-player-drag-badge {
   opacity: 1;
   color: #ff5ba4;
+}
+
+.music-player-minimize-btn {
+  appearance: none;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #59d8f2;
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 900;
+  cursor: pointer;
+  line-height: 1;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.music-player-minimize-btn:hover {
+  background: #ff0099;
+  color: #ffffff;
+}
+
+/* Floating mini badge mode for mobile / compact screens */
+.music-player--mini {
+  width: auto;
+  max-width: 230px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  clip-path: none !important;
+  background: rgba(8, 6, 26, 0.94);
+  border: 1.5px solid #00f0ff;
+  border-left: 4px solid #ff0099;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 240, 255, 0.35);
+  cursor: pointer;
+}
+
+.music-player-mini-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.music-player-mini-icon {
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.music-player-mini-title {
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 130px;
+  color: #ffffff;
+}
+
+.music-player-mini-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: #00f0ff;
+  color: #06091e;
+  border-radius: 50%;
+  font-size: 0.65rem;
+  font-weight: 900;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.12s ease;
+}
+
+.music-player-mini-toggle:hover {
+  transform: scale(1.1);
+  background: #ff5ba4;
+  color: #ffffff;
 }
 
 .music-player button,
@@ -215,4 +305,15 @@
   letter-spacing: 0.04em;
   color: #9fdcec;
   white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .music-player:not(.music-player--mini) {
+    width: 220px;
+    padding: 8px 10px;
+  }
+  .music-player-wave {
+    height: 24px;
+    margin-top: 5px;
+  }
 }

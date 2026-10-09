@@ -29,6 +29,9 @@ export const MusicPlayer = () => {
   const ratio = duration > 0 ? currentTime / duration : 0
 
   const playerRef = useRef<HTMLDivElement>(null)
+  const [isMinimized, setIsMinimized] = useState(() => {
+    return typeof window !== 'undefined' && window.innerWidth <= 768
+  })
   const [position, setPosition] = useState<{ x: number; y: number } | null>(() => {
     try {
       const saved = localStorage.getItem('p3_music_pos')
@@ -139,6 +142,40 @@ export const MusicPlayer = () => {
       }
     : {}
 
+  if (isMinimized) {
+    return (
+      <div
+        ref={playerRef}
+        className={`music-player music-player--mini${isDragging ? ' is-dragging' : ''}`}
+        style={style}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
+        onClick={() => {
+          if (!isDragging) setIsMinimized(false)
+        }}
+        title="Tap to open music controls • Drag to move"
+      >
+        <div className="music-player-mini-content">
+          <span className="music-player-mini-icon">{playing ? '🔊' : '🔈'}</span>
+          <span className="music-player-mini-title">{track.title}</span>
+          <button
+            type="button"
+            className="music-player-mini-toggle"
+            onClick={(e) => {
+              e.stopPropagation()
+              toggle()
+            }}
+            aria-label={playing ? 'Pause' : 'Play'}
+          >
+            {playing ? '❚❚' : '▶'}
+          </button>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div
       ref={playerRef}
@@ -152,9 +189,23 @@ export const MusicPlayer = () => {
     >
       <div className="music-player-header">
         <span className="music-player-eyebrow">Now Playing</span>
-        <span className="music-player-drag-badge" title="Click and drag to move">
-          ⠿ DRAG
-        </span>
+        <div className="music-player-header-actions">
+          <span className="music-player-drag-badge" title="Click and drag to move">
+            ⠿ DRAG
+          </span>
+          <button
+            type="button"
+            className="music-player-minimize-btn"
+            onClick={(e) => {
+              e.stopPropagation()
+              setIsMinimized(true)
+            }}
+            title="Minimize player"
+            aria-label="Minimize"
+          >
+            ⎯
+          </button>
+        </div>
       </div>
       <span className="music-player-title">{track.title}</span>
 

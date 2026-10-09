@@ -8,3 +8,15 @@
   align-items: flex-start;
   z-index: 3;
 }
+
+@media (max-width: 820px) {
+  .menu-list {
+    left: 28%;
+  }
+}
+
+@media (max-width: 500px) {
+  .menu-list {
+    left: 18%;
+  }
+}

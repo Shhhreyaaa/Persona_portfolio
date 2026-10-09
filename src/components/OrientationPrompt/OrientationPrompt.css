@@ -1,0 +1,90 @@
+/* Sleek Persona 3 Orientation Helper for Mobile Devices */
+.orientation-prompt {
+  position: fixed;
+  bottom: calc(max(10px, env(safe-area-inset-bottom)));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background: rgba(7, 10, 30, 0.94);
+  border: 1.5px solid #00e5ff;
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.75), 0 0 16px rgba(0, 229, 255, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #ffffff;
+  font-family: 'Eurostile Extended', 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  animation: prompt-slide-up 0.3s ease-out;
+  pointer-events: auto;
+}
+
+@keyframes prompt-slide-up {
+  from {
+    transform: translate(-50%, 20px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+.orientation-prompt-icon {
+  font-size: 15px;
+  animation: prompt-rotate 2.5s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes prompt-rotate {
+  0%, 20% {
+    transform: rotate(0deg);
+  }
+  50%, 70% {
+    transform: rotate(90deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.orientation-prompt-text {
+  color: #edf7ff;
+}
+
+.orientation-prompt-text strong {
+  color: #00e5ff;
+  text-transform: uppercase;
+}
+
+.orientation-prompt-dismiss {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border: none;
+  font-size: 11px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.orientation-prompt-dismiss:hover {
+  background: #ff0055;
+}
+
+/* Only show on phones in portrait mode */
+@media (orientation: landscape) or (min-width: 820px) {
+  .orientation-prompt {
+    display: none !important;
+  }
+}
