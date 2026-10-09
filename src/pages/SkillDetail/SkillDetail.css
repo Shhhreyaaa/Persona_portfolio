@@ -4,34 +4,34 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 1.2rem 0 0 1.6rem;
+  padding: 1.2rem 0 0 2rem;
   color: #fff;
-  font-family: 'Eurostile Extended', 'Arial Narrow', sans-serif;
+  font-family: 'Eurostile Extended', 'Jost', sans-serif;
   box-sizing: border-box;
 }
 
-/* --- header: plain white title, no banner box, with L/R badges flanking it */
+/* --- header: plain white title with L/R badges flanking it */
 .skill-detail-header {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.75rem;
 }
 
 .skill-detail-title {
-  font-size: 2.2rem;
+  font-family: 'Eurostile Extended', sans-serif;
+  font-size: 2.25rem;
   font-weight: 900;
   font-style: italic;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   line-height: 1;
   color: #fff;
   white-space: nowrap;
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
 }
 
 .skill-detail-nav {
-  /* a button (tap / click switches entry), drawn as the plain L/R badge */
   appearance: none;
-  padding: 0.3em 0.2em;
+  padding: 0.35em 0.3em;
   border: 0;
   background: none;
   font-family: inherit;
@@ -40,21 +40,25 @@
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: 0.3em;
-  font-size: 1.1rem;
+  gap: 0.35em;
+  font-size: 1.15rem;
   font-weight: 900;
   font-style: italic;
   color: #fff;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+  transition: transform 0.15s ease, color 0.15s ease;
 }
 
-/* double-chevron "fast forward" glyph — two overlapping triangles rather
-   than a single arrowhead, plus a bounce that nudges toward whichever
-   direction it points */
+.skill-detail-nav:hover {
+  transform: scale(1.08);
+  color: #52e8ff;
+}
+
+/* double-chevron fast-forward glyph */
 .skill-detail-nav-arrow {
   position: relative;
-  width: 1.05em;
-  height: 0.85em;
+  width: 1.1em;
+  height: 0.88em;
   flex-shrink: 0;
   animation: skill-detail-arrow-bounce-right 1s ease-in-out infinite;
 }
@@ -66,9 +70,10 @@
   top: 0;
   width: 0.62em;
   height: 100%;
-  background: #e3123b;
-  border: 2px solid #fff;
+  background: #ff0055;
+  border: 1.5px solid #fff;
   clip-path: polygon(0 0, 100% 50%, 0 100%);
+  filter: drop-shadow(0 0 4px rgba(255, 0, 85, 0.6));
 }
 
 .skill-detail-nav-arrow::before {
@@ -76,7 +81,7 @@
 }
 
 .skill-detail-nav-arrow::after {
-  left: 0.4em;
+  left: 0.42em;
 }
 
 .skill-detail-nav-arrow--left {
@@ -89,7 +94,7 @@
 }
 
 .skill-detail-nav-arrow--left::before {
-  left: 0.4em;
+  left: 0.42em;
 }
 
 .skill-detail-nav-arrow--left::after {
@@ -116,45 +121,39 @@
   }
 }
 
-/* --- panel: black company strip + white position/period strip, cut as one
-   skewed shape (clip-path on the outer box) so the slanted edge lines up
-   across both tones instead of each strip skewing on its own. Fixed size
-   rather than content-fit, so cycling entries never resizes the box — only
-   what's inside it changes.
-
-   The box itself is nudged left, bleeding a little past the screen edge —
-   but that transform carries the text with it too, so each text group gets
-   the exact opposite translateX to cancel it out and stay put. */
+/* --- panel: black company strip + white position/period strip --- */
 .skill-detail-panel {
   --panel-bleed: 1.5rem;
-  width: 40rem;
-  height: 7.8rem;
-  margin: 0.8rem 2rem 0.8rem 0;
+  width: 41rem;
+  height: 8rem;
+  margin: 0.8rem 2rem 0.9rem 0;
   display: flex;
   flex-direction: column;
-  clip-path: polygon(0 0, 100% 0, 94% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 94.5% 100%, 0% 100%);
   transform: translateX(calc(var(--panel-bleed) * -1));
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
 }
 
 .skill-detail-panel-top {
-  flex: 0 0 2.1rem;
+  flex: 0 0 2.2rem;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: #000;
-  padding: 0 1.6em;
-  text-align: center;
+  justify-content: flex-start;
+  background: #000000;
+  padding: 0 2.2rem;
+  border-bottom: 1px solid rgba(82, 232, 255, 0.25);
 }
 
 .skill-detail-eyebrow {
   display: inline-block;
-  font-size: 1rem;
-  font-weight: 700;
+  font-family: 'Eurostile Extended', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 900;
   font-style: italic;
-  letter-spacing: 0.02em;
-  color: #fff;
-  /* replays on every Left/Right cycle via key={i} — settles on the same
-     counter-shift that keeps it visually in place against the panel's bleed */
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #52e8ff;
+  text-shadow: 0 0 10px rgba(82, 232, 255, 0.65);
   animation: skill-detail-panel-text-in 0.3s ease-out;
 }
 
@@ -163,15 +162,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: #fff;
-  color: #0a0a0a;
-  padding: 0.4em 1.6em 0.5em 2.2em;
+  background: #ffffff;
+  color: #070a1a;
+  padding: 0.5rem 2.2rem;
 }
 
 .skill-detail-panel-bottom-content {
   display: flex;
   flex-direction: column;
-  gap: 0.2em;
+  gap: 0.2rem;
   animation: skill-detail-panel-text-in 0.3s ease-out;
 }
 
@@ -189,28 +188,34 @@
 .skill-detail-position {
   display: block;
   max-width: 100%;
-  font-size: 1.7rem;
+  font-family: 'Eurostile Extended', sans-serif;
+  font-size: 1.85rem;
   font-weight: 900;
   font-style: italic;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
+  color: #070a1a;
+  line-height: 1.15;
   white-space: nowrap;
   overflow: hidden;
 }
 
 .skill-detail-period {
-  font-size: 0.88rem;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.92rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
-  color: #5a5a5a;
+  font-style: normal;
+  letter-spacing: 0.08em;
+  color: #e3123b;
+  text-transform: uppercase;
 }
 
-/* --- body: the description lines --- */
+/* --- body: description bullet lines --- */
 .skill-detail-body {
   position: relative;
   flex: 1;
   margin-top: 0.6rem;
   padding-bottom: 1rem;
-  max-height: calc(58 * var(--vh));
+  max-height: calc(56 * var(--vh));
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: rgba(82, 232, 255, 0.4) transparent;
@@ -229,47 +234,43 @@
   border-radius: 4px;
 }
 
-/* pinned under the arcana/rank block, well clear of the music player's
-   fixed panel in the bottom-left corner — not bottom-aligned like the
-   portrait/name, which live on the opposite, unobstructed side */
 .skill-detail-description {
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
-  max-width: 46ch;
-  margin: 0 0 0 1.2rem;
+  gap: 0.85rem;
+  max-width: 48ch;
+  margin: 0.4rem 0 0 1.2rem;
   padding: 0;
   list-style: none;
 }
 
 .skill-detail-description li {
   position: relative;
-  padding-left: 1.3em;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.05rem;
-  font-weight: 700;
-  font-style: italic;
-  line-height: 1.38;
-  color: #eef6fb;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  padding-left: 1.6rem;
+  font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.02rem;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.55;
+  letter-spacing: 0.015em;
+  color: #f0f6ff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
   opacity: 0;
-  /* replays on every Left/Right cycle via key={i} on the parent <ul> —
-     each line staggers in rather than popping together */
   animation: skill-detail-description-in 0.35s ease-out forwards;
   animation-delay: calc(var(--i) * 0.1s);
 }
 
-/* angled chevron marker instead of a plain dot, echoing the L/R nav glyph */
+/* angled chevron marker */
 .skill-detail-description li::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 0.35em;
-  width: 0.5em;
-  height: 0.5em;
-  background: #e3123b;
-  border: 2px solid #9fe8ff;
+  top: 0.42em;
+  width: 0.58em;
+  height: 0.58em;
+  background: #ff0055;
   clip-path: polygon(0 0, 100% 50%, 0 100%);
+  filter: drop-shadow(0 0 5px rgba(255, 0, 85, 0.85));
 }
 
 @keyframes skill-detail-description-in {
@@ -283,10 +284,7 @@
   }
 }
 
-/* --- the entry's social-link bust-up (P3R's camp Commu art) over the band.
-   Each file is a 2048² canvas with the character in its lower-right
-   ~half, so it's drawn far taller than the screen, anchored to the bottom
-   right, leaving the character about two thirds of the screen tall */
+/* --- social link bust-up --- */
 .skill-detail-bustup {
   position: absolute;
   z-index: 1;
@@ -306,56 +304,54 @@
   }
 }
 
-/* --- name + description box across the bust-up's chest, like the social
-   link's profile: dark violet plate, the name in big cyan italics riding
-   its top edge, white description under it */
+/* --- right side about box across bust-up --- */
 .skill-detail-about {
   position: absolute;
   z-index: 2;
-  right: calc(3 * var(--vw));
+  right: calc(3.5 * var(--vw));
   bottom: calc(5 * var(--vh));
-  width: min(34 * var(--vw), 430px);
-  padding: 1.6rem 1.6rem 1rem 1.8rem;
+  width: min(34 * var(--vw), 440px);
+  padding: 1.8rem 1.8rem 1.4rem 2rem;
   animation: skill-detail-about-in 0.35s ease-out 0.1s both;
 }
 
-/* the plate on its own layer, so its slanted cut doesn't clip the name */
 .skill-detail-about::before {
   content: '';
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(100deg, rgba(24, 12, 78, 0.92), rgba(58, 30, 150, 0.84));
-  clip-path: polygon(2.5% 0, 100% 0, 97.5% 100%, 0 100%);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(135deg, rgba(16, 8, 56, 0.95), rgba(38, 14, 96, 0.90));
+  border-left: 3px solid #00f0ff;
+  clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.65), inset 0 0 25px rgba(82, 232, 255, 0.12);
+  backdrop-filter: blur(10px);
 }
 
 .skill-detail-about-name {
   position: absolute;
-  left: 1.6rem;
+  left: 1.8rem;
   top: 0;
   transform: translateY(-55%);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Eurostile Extended', 'Jost', sans-serif;
   font-size: 2.1rem;
-  font-weight: 400;
+  font-weight: 900;
   font-style: italic;
-  line-height: 1;
-  letter-spacing: -0.01em;
-  color: #4ff0ff;
+  letter-spacing: 0.02em;
+  color: #52e8ff;
   white-space: nowrap;
-  /* dark rim so it reads where it crosses the band */
-  text-shadow:
-    0 0 2px #120a3c,
-    0 0 2px #120a3c,
-    0 3px 8px rgba(0, 0, 0, 0.45);
+  text-shadow: 0 0 16px rgba(82, 232, 255, 0.75), 0 2px 6px #08041a;
 }
 
 .skill-detail-about-text {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.95rem;
-  line-height: 1.4;
-  color: #fff;
+  white-space: pre-line;
+  font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.94rem;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0.015em;
+  color: #edf4fc;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
 }
 
 @keyframes skill-detail-about-in {
