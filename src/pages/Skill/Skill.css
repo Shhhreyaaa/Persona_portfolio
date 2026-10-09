@@ -43,8 +43,9 @@
 
 @media (max-width: 768px) {
   .skill-list-container {
-    padding: 0.8rem;
-    padding-top: calc(max(16px, env(safe-area-inset-top)) + 52px);
+    padding: 1.1rem;
+    padding-top: calc(max(16px, env(safe-area-inset-top)) + 56px);
+    padding-bottom: calc(max(16px, env(safe-area-inset-bottom)) + 70px);
     height: auto;
     max-height: 100%;
     overflow-y: auto;

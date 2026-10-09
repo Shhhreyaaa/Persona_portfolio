@@ -167,15 +167,19 @@
 
 @media (max-width: 820px) {
   .menu-item {
-    font-size: calc(2.7rem * var(--scale));
-    -webkit-text-stroke: 3.6px var(--row-color);
+    font-size: calc(2.6rem * var(--scale));
+    line-height: 1.05;
+    margin-bottom: 0.35rem;
+    -webkit-text-stroke: 3.5px var(--row-color);
     filter: drop-shadow(0 2px 10px rgba(0, 10, 36, 0.7));
   }
 }
 
 @media (max-width: 500px) {
   .menu-item {
-    font-size: calc(2.15rem * var(--scale));
+    font-size: calc(2.1rem * var(--scale));
+    line-height: 1.08;
+    margin-bottom: 0.45rem;
     -webkit-text-stroke: 2.8px var(--row-color);
     filter: drop-shadow(0 2px 10px rgba(0, 10, 36, 0.75));
   }

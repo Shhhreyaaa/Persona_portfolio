@@ -158,22 +158,24 @@
 
 @media (max-width: 768px) {
   .basic-row {
-    --basic-row-h: 46px;
-    margin-bottom: 5px;
+    --basic-row-h: 52px;
+    margin-bottom: 8px;
     max-width: 100%;
   }
 
   .basic-row-content {
-    font-size: calc(var(--basic-row-h) * 0.65);
-    padding-right: 4%;
+    font-size: calc(var(--basic-row-h) * 0.62);
+    padding-right: 5%;
   }
 
   .basic-row-name {
-    font-size: 0.52em;
+    font-size: 0.54em;
+    letter-spacing: 0.03em;
   }
 
   .basic-row-subtitle {
     font-size: 0.38em;
+    margin-top: 2px;
   }
 
   .basic-row-aside {
