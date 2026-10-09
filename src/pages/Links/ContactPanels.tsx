@@ -44,7 +44,15 @@ export const ContactEmailForm = () => {
 
       const data = await response.json().catch(() => ({}))
 
-      if (response.ok || data.success === 'true' || data.success === true) {
+      if (data.message && (data.message.includes('Activation') || data.message.includes('Activate') || data.message.includes('activated'))) {
+        setIsSuccess(true)
+        setSentStatus('Activation link sent! Check shreyasomi775@gmail.com and click Activate Form.')
+        setName('')
+        setEmail('')
+        setCompany('')
+        setProjectType('')
+        setMessage('')
+      } else if (response.ok || data.success === 'true' || data.success === true) {
         setIsSuccess(true)
         setSentStatus('✓ Message sent successfully to shreyasomi775@gmail.com!')
         setName('')
