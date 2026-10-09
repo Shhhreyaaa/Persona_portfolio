@@ -13,6 +13,12 @@
   transition: opacity 150ms ease;
 }
 
+@media (max-width: 768px) {
+  .bg-video {
+    object-position: left center;
+  }
+}
+
 .bg-wash {
   position: absolute;
   inset: 0;
