@@ -1,9 +1,8 @@
-/* the transform also makes it the containing block for position: fixed
-   layers inside (preloader, transitions), so they stay on the stage */
+/* Full viewport stage: covers 100% of the screen seamlessly on desktop and mobile */
 .stage {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
-  transform-origin: center;
 }

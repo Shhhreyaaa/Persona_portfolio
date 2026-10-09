@@ -28,9 +28,8 @@ export const Stage = ({ children }: { children: ReactNode }) => {
       className="stage"
       style={
         {
-          width: fit.width,
-          height: fit.height,
-          transform: `translate(-50%, -50%) scale(${fit.scale})`,
+          width: '100%',
+          height: '100%',
           '--vw': `${fit.width / 100}px`,
           '--vh': `${fit.height / 100}px`,
         } as CSSProperties
