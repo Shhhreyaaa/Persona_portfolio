@@ -1,0 +1,421 @@
+/* Contact Section Custom Panels: Email Form, LinkedIn Card, GitHub Live */
+
+/* Email Form */
+.contact-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.6rem;
+  background: rgba(8, 12, 28, 0.85);
+  border: 1px solid rgba(89, 216, 242, 0.3);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.5);
+}
+
+.contact-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+@media (max-width: 600px) {
+  .contact-form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-input,
+.contact-select,
+.contact-textarea {
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  background: rgba(15, 20, 45, 0.85);
+  border: 1px solid rgba(89, 216, 242, 0.35);
+  border-radius: 9px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.92rem;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  box-sizing: border-box;
+}
+
+.contact-input::placeholder,
+.contact-textarea::placeholder {
+  color: #7b8ca8;
+}
+
+.contact-input:focus,
+.contact-select:focus,
+.contact-textarea:focus {
+  border-color: #00e5ff;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.35);
+}
+
+.contact-select {
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.contact-select option {
+  background: #0d122e;
+  color: #ffffff;
+}
+
+.contact-textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+.contact-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.contact-send-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1.6rem;
+  background: #00e5ff;
+  color: #050b1e;
+  font-family: 'Eurostile Extended', sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 229, 255, 0.45);
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.contact-send-btn:hover {
+  background: #73f4ff;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 22px rgba(0, 229, 255, 0.65);
+}
+
+.contact-send-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.contact-form-status {
+  font-size: 0.85rem;
+  color: #59d8f2;
+  font-style: italic;
+}
+
+/* LinkedIn Floating Card */
+.linkedin-float-card {
+  position: relative;
+  background: #ffffff;
+  color: rgba(0, 0, 0, 0.9);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  max-width: 600px;
+  margin-top: 0.5rem;
+  animation: linkedin-pop 0.25s ease-out both;
+}
+
+@keyframes linkedin-pop {
+  from {
+    transform: translateY(12px) scale(0.98);
+    opacity: 0;
+  }
+}
+
+.linkedin-banner {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  display: block;
+}
+
+.linkedin-content {
+  padding: 0 1.25rem 1.2rem;
+  position: relative;
+}
+
+.linkedin-avatar-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: -46px;
+  margin-bottom: 0.6rem;
+}
+
+.linkedin-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 4px solid #ffffff;
+  object-fit: cover;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.linkedin-top-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: right;
+  font-size: 0.78rem;
+  color: rgba(0, 0, 0, 0.75);
+  font-weight: 600;
+  max-width: 240px;
+}
+
+.linkedin-name-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.linkedin-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.linkedin-pronouns {
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 400;
+}
+
+.linkedin-badge-verified {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #0a66c2;
+  color: #fff;
+  font-size: 10px;
+}
+
+.linkedin-headline {
+  margin-top: 0.25rem;
+  font-size: 0.88rem;
+  line-height: 1.35;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.linkedin-location-row {
+  margin-top: 0.35rem;
+  font-size: 0.82rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.linkedin-location-row a {
+  color: #0a66c2;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.linkedin-connections {
+  color: #0a66c2;
+  font-weight: 600;
+  margin-top: 0.15rem;
+  font-size: 0.82rem;
+}
+
+.linkedin-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.linkedin-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 1.1rem;
+  background: #0a66c2;
+  color: #ffffff !important;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.linkedin-btn-primary:hover {
+  background: #004182;
+}
+
+.linkedin-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 1rem;
+  background: transparent;
+  color: #0a66c2 !important;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid #0a66c2;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.linkedin-btn-secondary:hover {
+  background: rgba(10, 102, 194, 0.1);
+}
+
+.linkedin-open-card {
+  margin-top: 0.75rem;
+  padding: 0.65rem 0.9rem;
+  background: #edf3f8;
+  border-radius: 8px;
+  font-size: 0.82rem;
+}
+
+.linkedin-open-title {
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.linkedin-open-sub {
+  color: rgba(0, 0, 0, 0.7);
+  margin-top: 0.15rem;
+}
+
+/* GitHub Live Contributions Card */
+.github-live-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+  background: rgba(8, 12, 28, 0.85);
+  border: 1px solid rgba(89, 216, 242, 0.3);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.5);
+  max-width: 600px;
+}
+
+.github-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.github-stats-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0.8rem;
+  background: rgba(35, 134, 54, 0.2);
+  border: 1px solid rgba(46, 160, 67, 0.5);
+  color: #3fb950;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: 999px;
+}
+
+.github-graph-wrapper {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 0.85rem;
+  overflow-x: auto;
+}
+
+.github-graph-img {
+  width: 100%;
+  display: block;
+  min-width: 480px;
+  height: auto;
+}
+
+.github-repos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin-top: 0.2rem;
+}
+
+@media (max-width: 580px) {
+  .github-repos-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.github-repo-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.65rem 0.85rem;
+  background: rgba(13, 17, 35, 0.9);
+  border: 1px solid rgba(89, 216, 242, 0.25);
+  border-radius: 8px;
+  text-decoration: none;
+  color: #ffffff;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.github-repo-card:hover {
+  border-color: #00e5ff;
+  transform: translateY(-2px);
+}
+
+.github-repo-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #59d8f2;
+}
+
+.github-repo-desc {
+  font-size: 0.78rem;
+  color: #a4b4cb;
+  line-height: 1.3;
+}
+
+.github-action-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.4rem;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.github-open-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 1.25rem;
+  background: #ff0055;
+  color: #ffffff !important;
+  font-size: 0.98rem;
+  font-weight: 800;
+  font-style: italic;
+  text-decoration: none;
+  border-radius: 4px;
+  clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+  box-shadow: 0 4px 14px rgba(255, 0, 85, 0.45);
+  transition: all 0.15s ease;
+}
+
+.github-open-btn:hover {
+  background: #59d8f2;
+  color: #0b0d26 !important;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 20px rgba(89, 216, 242, 0.6);
+}

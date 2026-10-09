@@ -1,0 +1,16 @@
+/*
+ * Baseline for the live/current page wrapper. Every transition effect (see
+ * ./transitions) wraps its incoming content in an element carrying this
+ * class, and the idle path below (no transition in flight) uses it too.
+ *
+ * Without an explicit height here, a bare ".route-live" collapses to fit
+ * its content once a transition ends and effects stop adding their own
+ * sizing (e.g. CircleReveal's ".route-enter" also sets height: 100%, but
+ * only while it's mounted) — breaking any page that relies on height: 100%
+ * cascading down, like Skill's centered layout snapping to the top the
+ * instant its transition finished.
+ */
+.route-live {
+  position: relative;
+  height: 100%;
+}

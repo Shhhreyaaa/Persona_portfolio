@@ -1,0 +1,157 @@
+.basic-row {
+  cursor: pointer;
+  /* the black bar is painted here and cut to shape by --basic-row-shape;
+     head_row_*_colored.png rides on top of it as the band + head silhouette */
+  --basic-row-h: 70px;
+  /* the bar's right cut, measured off the PNGs: both asset families put it at
+     99.7% of the width along the top edge and 95.5% along the bottom */
+  --basic-row-cut-top: 99.7%;
+  --basic-row-cut-bottom: 95.5%;
+  --basic-row-border: 3px;
+  /* the bar outline itself — reused verbatim as the outer ring of .is-selected's
+     border so the black bar and the red cursor share one silhouette */
+  --basic-row-shape: polygon(
+    0 0,
+    var(--basic-row-cut-top) 0,
+    var(--basic-row-cut-bottom) 100%,
+    0 100%
+  );
+
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  height: var(--basic-row-h);
+  margin-bottom: calc(var(--basic-row-h) * 0.08);
+  background: #000000;
+  clip-path: var(--basic-row-shape);
+}
+
+.basic-row-bg {
+  position: absolute;
+  inset: 0;
+  left: -17%;
+  width: 100%;
+  height: 100%;
+  /* deliberate stretch, not a mistake: the art is ~5:1 and the row is ~10:1,
+     which is exactly how much the source UI elongates the heads horizontally */
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.basic-row-content {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 2%;
+  padding-right: 6%;
+  font-size: calc(var(--basic-row-h) * 0.6);
+  line-height: 1;
+  color: #fff;
+}
+
+.basic-row-title-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: right;
+  min-width: 0;
+}
+
+.basic-row-name {
+  font-family: 'Eurostile Extended', 'Arial Narrow', sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 0.48em;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
+  transition: color 0.15s ease, text-shadow 0.15s ease;
+}
+
+.basic-row.is-selected .basic-row-name {
+  color: #52e8ff;
+  text-shadow: 0 0 10px rgba(82, 232, 255, 0.7);
+}
+
+.basic-row:hover .basic-row-name {
+  color: #52e8ff;
+}
+
+.basic-row-subtitle {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.32em;
+  letter-spacing: 0.01em;
+  color: #cfcfcf;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+/* fixed-width cell so the right-hand text (dates, licences) lines up
+   column-wise down the whole list */
+.basic-row-aside {
+  flex: 0 0 28%;
+  text-align: right;
+  white-space: nowrap;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 0.4em;
+  color: #cfcfcf;
+}
+
+/* keyboard cursor highlight — the row the up/down selection is currently on.
+   an outline/border can't be used: it would draw a straight right edge and
+   ignore the bar's slanted cut. instead one polygon traces the cut clockwise,
+   seams back to the origin, then retraces it inset by the border width
+   counter-clockwise — the nonzero fill rule cancels the interior and leaves
+   the outline, and the seam has zero width so it never shows */
+.basic-row.is-selected::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background: #e3123b;
+  clip-path: polygon(
+    0 0,
+    var(--basic-row-cut-top) 0,
+    var(--basic-row-cut-bottom) 100%,
+    0 100%,
+    0 0,
+    var(--basic-row-border) var(--basic-row-border),
+    var(--basic-row-border) calc(100% - var(--basic-row-border)),
+    calc(var(--basic-row-cut-bottom) - var(--basic-row-border)) calc(100% - var(--basic-row-border)),
+    calc(var(--basic-row-cut-top) - var(--basic-row-border)) var(--basic-row-border),
+    var(--basic-row-border) var(--basic-row-border)
+  );
+}
+
+/* vertical ribbon along the left edge, over the portrait — "Current" on the
+   job in progress, a category on the credits. z-index 1 keeps it under the artwork so the head
+   clips into the word, the way the source UI does */
+.basic-row-tag {
+  position: absolute;
+  top: 50%;
+  left: 7%;
+  z-index: 1;
+  transform: translate(-50%, -50%) rotate(-33deg) scaleX(0.55);
+  font-family: 'Eurostile Extended', 'Arial Narrow', sans-serif;
+  font-weight: 800;
+  font-size: calc(var(--basic-row-h) * 0.34);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+}

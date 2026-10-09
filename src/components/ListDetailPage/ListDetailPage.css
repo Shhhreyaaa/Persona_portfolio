@@ -1,0 +1,347 @@
+/* the band and the page name are drawn in FallingFigure's canvas (z-index
+   1), so he falls in front of them; the list and the detail sit above it */
+.list-detail-list {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: 2rem;
+  padding-top: 7rem;
+}
+
+.list-detail-list .basic-row {
+  max-width: min(640px, 44vw);
+}
+
+/* the selected row's detail, on the band */
+.list-detail-panel {
+  position: absolute;
+  z-index: 2;
+  top: calc(6.5 * var(--vh));
+  left: 56%;
+  right: 4%;
+  color: #14123a;
+  /* Jost (Futura-style, see fonts.css): P3R's geometric italic profile and
+     menu type */
+  font-family: 'Jost', 'Futura', Arial, sans-serif;
+  animation: list-detail-panel-in 0.22s ease-out both;
+  max-height: calc(86 * var(--vh));
+  overflow-y: auto;
+}
+
+@keyframes list-detail-panel-in {
+  from {
+    transform: translateX(16px);
+    opacity: 0;
+  }
+}
+
+.detail-heading {
+  margin-bottom: 0.8rem;
+}
+
+.detail-heading h2 {
+  /* the social link profile's name: big, light-ish italics */
+  font-weight: 700;
+  font-style: italic;
+  font-size: 1.95rem;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.detail-heading p {
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-style: italic;
+  color: #5a5a72;
+}
+
+.detail-section {
+  margin-bottom: 0.75rem;
+}
+
+/* navy pill with the label in italic cyan, slanted ends */
+.detail-pill {
+  display: inline-block;
+  min-width: 8.5rem;
+  padding: 0.15rem 1rem;
+  border-radius: 999px;
+  background: #1d1666;
+  color: #59d8f2;
+  font-size: 0.82rem;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.detail-body {
+  margin-top: 0.35rem;
+  padding-left: 0.8rem;
+  font-size: 0.96rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.detail-body ul {
+  list-style: none;
+}
+
+/* bullet lines: a small magenta triangle, like the detail page's */
+.detail-lines li {
+  position: relative;
+  padding-left: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.detail-lines li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  border-left: 0.55em solid #e3123b;
+  border-top: 0.3em solid transparent;
+  border-bottom: 0.3em solid transparent;
+}
+
+.detail-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.detail-chips li {
+  padding: 0.12rem 0.65rem;
+  background: #14123a;
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  font-style: italic;
+  clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 100%);
+}
+
+.detail-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.35rem;
+}
+
+.detail-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 1.05rem;
+  background: #ff0055;
+  color: #ffffff !important;
+  font-size: 0.95rem;
+  font-weight: 800;
+  font-style: italic;
+  text-decoration: none;
+  border-radius: 4px;
+  clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+  box-shadow: 0 4px 14px rgba(255, 0, 85, 0.4);
+  transition: all 0.15s ease;
+}
+
+.detail-links a:hover {
+  background: #59d8f2;
+  color: #0b0d26 !important;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(89, 216, 242, 0.6);
+}
+
+.detail-note {
+  margin-top: 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 400;
+  font-style: italic;
+  color: #5a5a72;
+}
+
+/* BUILD: the detail sits in the band's round window, on the video rather
+   than the white — light, a little larger and heavier, with a dark lift */
+.list-detail-panel--on-video {
+  top: calc(6.5 * var(--vh));
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(12, 4, 48, 0.6);
+  background: rgba(8, 12, 32, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(89, 216, 242, 0.35);
+  border-radius: 16px;
+  padding: 1.25rem 1.75rem;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.65);
+  max-width: 620px;
+  max-height: calc(86 * var(--vh));
+  overflow-y: auto;
+}
+
+.list-detail-panel--on-video::-webkit-scrollbar,
+.list-detail-panel--dark::-webkit-scrollbar {
+  width: 5px;
+}
+.list-detail-panel--on-video::-webkit-scrollbar-track,
+.list-detail-panel--dark::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+}
+.list-detail-panel--on-video::-webkit-scrollbar-thumb,
+.list-detail-panel--dark::-webkit-scrollbar-thumb {
+  background: #59d8f2;
+  border-radius: 4px;
+}
+
+.list-detail-panel--on-video .detail-heading h2 {
+  font-size: 2.2rem;
+  line-height: 1.1;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.list-detail-panel--on-video .detail-heading p {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: #8ff3ff;
+  margin-top: 0.2rem;
+}
+
+.list-detail-panel--on-video .detail-section {
+  margin-bottom: 0.7rem;
+}
+
+.list-detail-panel--on-video .detail-pill {
+  background: #ff0055;
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-shadow: none;
+  box-shadow: 0 2px 8px rgba(255, 0, 85, 0.35);
+}
+
+.list-detail-panel--on-video .detail-body {
+  font-size: 1.02rem;
+  font-weight: 500;
+  margin-top: 0.3rem;
+  padding-left: 0.75rem;
+}
+
+.list-detail-panel--on-video .detail-lines li {
+  margin-bottom: 0.22rem;
+}
+
+.list-detail-panel--on-video .detail-lines li::before {
+  border-left-color: #ff3d6a;
+}
+
+.list-detail-panel--on-video .detail-chips li {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-shadow: none;
+  background: rgba(22, 20, 60, 0.9);
+  border: 1px solid rgba(89, 216, 242, 0.45);
+  color: #59d8f2;
+}
+
+.list-detail-panel--on-video .detail-note {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #cfeaff;
+  margin-top: 0.3rem;
+}
+
+.list-detail-panel--on-video .detail-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 1.25rem;
+  background: #ff0055;
+  color: #ffffff !important;
+  font-size: 1.05rem;
+  font-weight: 800;
+  font-style: italic;
+  text-decoration: none;
+  border-bottom: none;
+  border-radius: 4px;
+  clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+  box-shadow: 0 4px 14px rgba(255, 0, 85, 0.45);
+  transition: all 0.15s ease;
+}
+
+.list-detail-panel--on-video .detail-links a:hover {
+  background: #59d8f2;
+  color: #0b0d26 !important;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 20px rgba(89, 216, 242, 0.6);
+}
+
+/* Dark theme for about panel */
+.list-detail-panel--dark {
+  top: calc(6.5 * var(--vh));
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
+  background: rgba(9, 12, 28, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(89, 216, 242, 0.35);
+  border-radius: 18px;
+  padding: 1.4rem 1.9rem;
+  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  max-width: 620px;
+  max-height: calc(86 * var(--vh));
+  overflow-y: auto;
+}
+
+.list-detail-panel--dark .detail-heading h2 {
+  color: #ffffff;
+  font-size: 2.3rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+}
+
+.list-detail-panel--dark .detail-heading p {
+  color: #59d8f2;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.list-detail-panel--dark .detail-pill {
+  background: #ff0099;
+  color: #ffffff;
+  text-shadow: none;
+  box-shadow: 0 2px 10px rgba(255, 0, 153, 0.45);
+}
+
+.list-detail-panel--dark .detail-body {
+  color: #f0f4ff;
+  font-size: 1.25rem;
+}
+
+.list-detail-panel--dark .detail-note {
+  color: #dce7ff;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  font-style: normal;
+}
+
+.list-detail-panel--dark .detail-chips li {
+  background: rgba(30, 24, 80, 0.9);
+  color: #59d8f2;
+  border: 1px solid rgba(89, 216, 242, 0.4);
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 0.25rem 0.85rem;
+}
+
+.list-detail-panel--dark .detail-lines li {
+  color: #edf2ff;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.list-detail-panel--dark .detail-lines li::before {
+  border-left-color: #ff0055;
+}
