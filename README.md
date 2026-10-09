@@ -125,7 +125,6 @@ The optimized bundle will be generated in the `dist/` directory.
 ## ⚖️ Credits & Acknowledgements
 
 - **Visual Inspiration & Audio**: *Persona 3 Reload* © [ATLUS](https://atlus.com/) / [SEGA](https://www.sega.com/).
-- **Original Camp Concept**: Inspired by David Yappeter's Persona 3 web experiment.
 - **3D Character Model**: *Makoto Yuki (Battle Bundle)* by 雨宮レン (Licensed under CC BY 4.0).
 - **Audio Tracks**: *Changing Seasons -Reload-*, *Color Your Night*, *Deep Breath Deep Breath -Reincarnation-*, *It's Going Down Now*.
 
