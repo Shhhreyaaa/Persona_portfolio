@@ -294,6 +294,41 @@
   margin-top: 0.15rem;
 }
 
+@media (max-width: 600px) {
+  .linkedin-avatar {
+    width: 82px;
+    height: 82px;
+    border-width: 3px;
+  }
+  .linkedin-avatar-row {
+    margin-top: -38px;
+    margin-bottom: 0.45rem;
+    gap: 0.5rem;
+  }
+  .linkedin-top-badges {
+    font-size: 0.72rem;
+    gap: 0.2rem;
+    max-width: 62%;
+  }
+  .linkedin-name {
+    font-size: 1.25rem;
+  }
+  .linkedin-headline {
+    font-size: 0.82rem;
+  }
+  .linkedin-buttons {
+    gap: 0.4rem;
+  }
+  .linkedin-btn-primary,
+  .linkedin-btn-secondary {
+    padding: 0.32rem 0.9rem;
+    font-size: 0.85rem;
+  }
+  .linkedin-content {
+    padding: 0 0.9rem 0.9rem;
+  }
+}
+
 /* GitHub Live Contributions Card */
 .github-live-card {
   display: flex;
