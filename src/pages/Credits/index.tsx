@@ -37,6 +37,7 @@ export const Credits = () => {
       band: true,
       /* huge grey page name on the band, behind him (FIGURE.title) */
       title: 'CREDITS',
+      dark: true,
     })
     /* figure lab — public, for reference; its code only downloads when asked for */
     let disposeLab: (() => void) | undefined

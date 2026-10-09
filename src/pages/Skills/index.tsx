@@ -23,4 +23,4 @@ const ENTRIES: ListEntry[] = SKILL_CATEGORIES.map((cat) => ({
   ),
 }))
 
-export const Skills = () => <ListDetailPage title="SKILLS" ring="TOOLBOX" entries={ENTRIES} />
+export const Skills = () => <ListDetailPage title="SKILLS" ring="TOOLBOX" dark entries={ENTRIES} />

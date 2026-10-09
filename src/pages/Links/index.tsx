@@ -52,4 +52,4 @@ const ENTRIES: ListEntry[] = [
 ]
 
 /** CONTACT: Email, LinkedIn, GitHub with rich interactive panels */
-export const Links = () => <ListDetailPage title="CONTACT" ring="CONNECT" entries={ENTRIES} />
+export const Links = () => <ListDetailPage title="CONTACT" ring="CONNECT" dark entries={ENTRIES} />

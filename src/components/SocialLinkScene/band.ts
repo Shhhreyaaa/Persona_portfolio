@@ -67,7 +67,7 @@ export const createBand = (initiallyShown: boolean, dark = false) => {
   }
   const uniforms = {
     uOpacity: { value: 1 },
-    uBandColor: { value: dark ? new THREE.Color(0.05, 0.07, 0.18) : new THREE.Color(1, 1, 1) },
+    uBandColor: { value: dark ? new THREE.Color(0.0, 0.0, 0.0) : new THREE.Color(1, 1, 1) },
     uOffset: { value: new THREE.Vector2() },
     /* x, y, radius (see BandHole); radius 0 = no window */
     uHole: { value: new THREE.Vector3() },
@@ -168,9 +168,10 @@ export const createBand = (initiallyShown: boolean, dark = false) => {
   const hidden: THREE.Object3D[] = []
   const renderShadow = (renderer: THREE.WebGLRenderer, scene: THREE.Scene, camera: THREE.Camera, s: BandShadow, e: number) => {
     if (s.strength <= 0) return
-    /* premultiplied: white mixed toward the colour, scaled by the band's fade */
+    /* premultiplied: white or black mixed toward the colour, scaled by the band's fade */
     shadowColor.set(s.color)
-    shadowColor.convertLinearToSRGB().lerpColors(WHITE, shadowColor, s.strength).multiplyScalar(e)
+    const baseColor = dark ? new THREE.Color(0.0, 0.0, 0.0) : WHITE
+    shadowColor.convertLinearToSRGB().lerpColors(baseColor, shadowColor, s.strength).multiplyScalar(e)
     shadowUniforms.p3ShadowColor.value.setRGB(shadowColor.r, shadowColor.g, shadowColor.b, THREE.SRGBColorSpace)
     shadowUniforms.p3ShadowOpacity.value = e
     scene.traverse((o) => {

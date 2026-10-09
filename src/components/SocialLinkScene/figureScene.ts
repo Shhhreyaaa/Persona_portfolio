@@ -79,11 +79,12 @@ export const mountFigureScene = (mount: HTMLElement, options: FigureSceneOptions
     mount.appendChild(taken.frame)
   }
   const slideIn = !!options.bandIn && !taken
-  const band = options.band ? createBand(!slideIn, !!options.dark) : null
+  const isDark = options.dark !== false
+  const band = options.band ? createBand(!slideIn, isDark) : null
   const ring = band && options.ring ? createRingText(options.ring) : null
   const title = band && options.title && !ring ? createScreenText(options.title) : null
-  const circleConfig = options.dark ? { ...fig.circle, color: '#4fe0f8' } : fig.circle
-  const titleConfig = options.dark ? { ...fig.title, color: '#4fe0f8' } : fig.title
+  const circleConfig = isDark ? { ...fig.circle, color: '#4fe0f8' } : fig.circle
+  const titleConfig = isDark ? { ...fig.title, color: '#4fe0f8' } : fig.title
   const drawTitle = () => {
     title?.render(renderer, titleConfig)
     ring?.render(renderer, circleConfig, circleConfig)

@@ -32,4 +32,4 @@ const ENTRIES: ListEntry[] = PROJECTS.slice(0, 5).map((p) => ({
 
 /** BUILD: the CV's notable projects, the list in a round window onto the
     video with "PROJECTS" round it, like the system menu */
-export const Builds = () => <ListDetailPage title="BUILD" ring="PROJECTS" entries={ENTRIES} />
+export const Builds = () => <ListDetailPage title="BUILD" ring="PROJECTS" dark entries={ENTRIES} />

@@ -48,7 +48,7 @@ type ListDetailPageProps = {
  * on it, and Makoto falling through (band and name are drawn with him, by
  * FallingFigure).
  */
-export const ListDetailPage = ({ title, entries, openOnClick = false, ring, dark = false }: ListDetailPageProps) => {
+export const ListDetailPage = ({ title, entries, openOnClick = false, ring, dark = true }: ListDetailPageProps) => {
   const { selected, moveTo } = useMenuNavigation(entries.length)
   const current = entries[selected]
 
@@ -85,7 +85,7 @@ export const ListDetailPage = ({ title, entries, openOnClick = false, ring, dark
       </div>
       {/* keyed so each entry's detail slides in fresh */}
       <div
-        className={`list-detail-panel${ring ? ' list-detail-panel--on-video' : ''}${dark ? ' list-detail-panel--dark' : ''}`}
+        className={`list-detail-panel${ring ? ' list-detail-panel--on-video' : ''}${dark && !ring ? ' list-detail-panel--dark' : ''}`}
         key={current.key}
       >
         {current.detail}
