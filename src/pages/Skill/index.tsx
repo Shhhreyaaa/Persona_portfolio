@@ -42,7 +42,7 @@ export const Skill = () => {
       <img className="skill-camp-art" src={CAMP_ART} alt="" aria-hidden="true" />
       {/* position+z-index needed so this stacks above MenuBackground's
           un-z-indexed absolute layers, which would otherwise paint over it */}
-      <div style={{ position: 'relative', zIndex: 1, height: '100%', padding: '2rem', paddingTop: '7rem' }}>
+      <div className="skill-list-container">
         {EXPERIENCE.map((exp, i) => (
           <BasicRow
             key={exp.company}

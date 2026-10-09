@@ -32,3 +32,27 @@
 .route-exit-old .skill-camp-art {
   animation: none;
 }
+
+.skill-list-container {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  padding: 2rem;
+  padding-top: 7rem;
+}
+
+@media (max-width: 768px) {
+  .skill-list-container {
+    padding: 0.8rem;
+    padding-top: calc(max(16px, env(safe-area-inset-top)) + 52px);
+    height: auto;
+    max-height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .skill-camp-art {
+    opacity: 0.22;
+    filter: brightness(0.85);
+  }
+}

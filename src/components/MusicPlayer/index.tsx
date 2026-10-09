@@ -34,6 +34,9 @@ export const MusicPlayer = () => {
   })
   const [position, setPosition] = useState<{ x: number; y: number } | null>(() => {
     try {
+      if (typeof window !== 'undefined' && window.innerWidth <= 768) {
+        return null
+      }
       const saved = localStorage.getItem('p3_music_pos')
       if (saved) {
         const parsed = JSON.parse(saved)
@@ -108,7 +111,7 @@ export const MusicPlayer = () => {
       try {
         playerRef.current?.releasePointerCapture(e.pointerId)
       } catch {}
-      if (position) {
+      if (position && window.innerWidth > 768) {
         try {
           localStorage.setItem('p3_music_pos', JSON.stringify(position))
         } catch {}
@@ -119,6 +122,10 @@ export const MusicPlayer = () => {
   // Handle window resize to keep player within viewport bounds
   useEffect(() => {
     const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setPosition(null)
+        return
+      }
       setPosition((prev) => {
         if (!prev) return null
         const w = playerRef.current?.offsetWidth || 256

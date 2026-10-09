@@ -155,3 +155,36 @@
   color: #fff;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
+
+@media (max-width: 768px) {
+  .basic-row {
+    --basic-row-h: 46px;
+    margin-bottom: 5px;
+    max-width: 100%;
+  }
+
+  .basic-row-content {
+    font-size: calc(var(--basic-row-h) * 0.65);
+    padding-right: 4%;
+  }
+
+  .basic-row-name {
+    font-size: 0.52em;
+  }
+
+  .basic-row-subtitle {
+    font-size: 0.38em;
+  }
+
+  .basic-row-aside {
+    font-size: 0.44em;
+    flex: 0 0 32%;
+  }
+
+  .basic-row-tag {
+    font-size: calc(var(--basic-row-h) * 0.32);
+    left: 8%;
+    max-width: 120px;
+  }
+}
+
